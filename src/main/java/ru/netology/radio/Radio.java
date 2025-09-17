@@ -64,4 +64,8 @@ public class Radio {
             currentVolume--;
         }
     }
+
+    public int getNumberOfStations() {
+        return numberOfStations;
+    }
 }
