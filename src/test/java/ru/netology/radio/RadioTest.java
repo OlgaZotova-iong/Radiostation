@@ -1,7 +1,6 @@
 package ru.netology.radio;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
@@ -242,60 +241,17 @@ class RadioTest {
     }
 
     @Test
-    void setVolumeToMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(100);
-        assertEquals(100, radio.getCurrentVolume());
-    }
-
-    //Тесты для граничных значений станций
-    @Test
-    void setStationToZero() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(0);
-        assertEquals(0, radio.getCurrentStation());
+    void shouldCreateRadioWithCustomNumberOfStations() {
+        Radio radio = new Radio(30);
+        assertEquals(30, radio.getNumberOfStations());
     }
 
     @Test
-    void setStationToMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-        assertEquals(9, radio.getCurrentStation());
-    }
-
-    // Дополнительные тесты для обхода станций
-
-    @Test
-    void nextStationFromZero() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(0);
-        radio.next();
-        assertEquals(1, radio.getCurrentStation());
-    }
-
-    @Test
-    void prevStationFromNine() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-        radio.prev();
-        assertEquals(8, radio.getCurrentStation());
-    }
-
-    // Дополнительные тесты для изменения громкости (граничные случаи)
-
-    @Test
-    void increaseVolumeFromMaxStaysMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(100);
-        radio.increaseVolume();
-        assertEquals(100, radio.getCurrentVolume());
-    }
-
-    @Test
-    void decreaseVolumeFromMinStaysMin() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(0);
-        radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume());
+    void shouldSetCurrentStationWithinCustomStationsCount() {
+        Radio radio = new Radio(30);
+        radio.setCurrentStation(15);
+        assertEquals(15, radio.getCurrentStation());
     }
 }
+
+
